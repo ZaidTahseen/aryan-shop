@@ -1,0 +1,26 @@
+#all_products{
+
+    display: flex;
+    justify-content: space-around;
+    /* border: 2px solid red; */
+    margin: 40px;
+    flex-wrap: wrap;
+}
+
+.card-body{
+    text-align: center;
+}
+
+.btn {
+   margin: 3px 0px;
+}
+
+.card{
+    margin: 10px 0px !important;
+}
+
+#disable{
+    pointer-events: none;
+    background-color: rgb(93, 101, 107);
+    border: 1px solid black;
+}

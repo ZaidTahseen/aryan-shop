@@ -1,0 +1,85 @@
+<%- include('../includes/head.ejs')   %>
+
+
+<link rel="stylesheet" href="/card.css">
+<link rel="stylesheet" href="/delete_model.css">
+
+</head>
+
+<body>
+
+    <%- include('../includes/nav.ejs')   %>
+
+    <section id="all_products">
+
+
+        <%  for ( let item of all_prod ) { %>
+
+        <div class="card" style="width: 18rem; height: 440px !important;">
+            <img src="<%= item.imageUrl %>" class="card-img-top" alt="..." style="height: 60% !important;">
+            <div class="card-body">
+                <h5 class="card-title"><%= item.title%></h5>
+                <h5 class="card-title">Price - <%= item.price%></h5>
+                <h5 class="card-title">Quantity - <%= item.quantity %></h5>
+                <a href="/edit/<%= item._id %>" class="btn btn-primary">Edit</a>
+
+
+
+
+                <button class="btn btn-danger" onclick="document.getElementById('id01').style.display='block'">Delete</button>
+
+                <div id="id01" class="modal" >
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                        title="Close Modal">×</span>
+                    <form class="modal-content" style=" width: 500px;" >
+                        <div class="container">
+                            <h1>Delete Product</h1>
+                            <p>Are you sure you want to delete your product?</p>
+
+                            <div class="clearfix">
+                                
+                                <a  class='btn btn-success'  onclick="document.getElementById('id01').style.display='none'" >Cancel</a>
+
+                                <a onclick="document.getElementById('id01').style.display='none'" class="btn btn-primary"
+                                    href="delete/<%= item._id%>" class="btn btn-danger">Delete</a>
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+        <%   } %>
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <%- include('../includes/end.ejs')   %>

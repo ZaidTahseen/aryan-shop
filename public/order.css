@@ -1,0 +1,29 @@
+.orders{
+    margin-top: 50px;
+}
+table{
+    /* border: 2px solid rgb(5, 12, 56); */
+    margin: auto;
+    width: 1000px;
+}
+
+th{
+    background-color: rgb(14, 14, 77 , 0.9);
+    /* border: 1px solid blue; */
+    color: wheat;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+td{
+    /* border: 1px solid rgb(80, 138, 57); */
+    background-color: rgb(107, 182, 196);
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: 500;
+}
+
+.order-image{
+    width: 80px;
+    height: 100px;
+}

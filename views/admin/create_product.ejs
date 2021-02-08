@@ -1,0 +1,108 @@
+<%- include('../includes/head.ejs')   %>
+
+<link rel="stylesheet" href="/form.css">
+
+</head>
+
+<body>
+
+    <%- include('../includes/nav.ejs')   %>
+
+
+    <section>
+
+
+
+        <form id="our-form" action="/create-product" method="POST" enctype="multipart/form-data" >
+
+            <div class="our-form-group">
+                <label for="title">Title</label>
+
+                <input type="text" id="title" name="title"  value="<%= product.title %>">
+            </div>
+
+
+            <div class="our-form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price"  value="<%= product.price %>">
+            </div>
+
+
+            <div class="our-form-group">
+                <label for="about">About</label>
+                <input type="text" id="about" name="about"  value="<%= product.about %>">
+            </div>
+            <div class="our-form-group">
+                <label for="img">Image</label>
+                <input type="file" id="img" name="image"  value="<%= product.imageUrl %>" >
+            </div>
+
+            <!-- <div class="our-form-group">
+                <label for="img">ImageUrl</label>
+                <input type="text" id="img" name="imageUrl" required value="<%= product.imageUrl %>">
+            </div> -->
+
+            <div class="our-form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" value="<%= product.quantity %>">
+            </div>
+
+
+            <div class="our-form-group">
+                <label for="detail_1">Detail - 1</label>
+
+                <% if( !product.detail ) {  %>
+                <input type="text" id="detail_1" name="detail_1"  value="">
+                <% } else {  %>
+                <input type="text" id="detail_1" name="detail_1"  value="<%= product.detail[0] %>">
+                <% } %>
+
+
+
+            </div>
+            <div class="our-form-group">
+                <label for="detail_2">Detail - 2</label>
+
+                <% if( !product.detail ) {  %>
+                <input type="text" id="detail_2" name="detail_2"  value="">
+                <% } else {  %>
+
+                <input type="text" id="detail_2" name="detail_2" value="<%= product.detail[1] %>">
+                <% } %>
+
+
+            </div>
+            <div class="our-form-group">
+                <label for="detail_3">Detail - 3</label>
+
+
+                <% if( !product.detail ) {  %>
+                <input type="text" id="detail_3" name="detail_3"  value="">
+                <% } else {  %>
+
+                <input type="text" id="detail_3" name="detail_3"  value="<%= product.detail[2] %>">
+                <% } %>
+            </div>
+
+            <input type="text" hidden value="<%= product._id %>" name="prod_id">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<%- include('../includes/head.ejs')   %>
+
+
+<link rel="stylesheet" href="/cart.css">
+<style>
+
+    .hidden{
+        pointer-events: none;
+        cursor: default;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+    <%- include('../includes/nav.ejs')   %>
+
+
+
+
+    <section id="cart_products">
+
+        <% if(cart_items.length > 0 ) { %>
+
+        <%  for ( let item of cart_items) { %>
+
+        <div class="cart-item">
+            <h2 class="cart-title"><%=  item.productId.title %> </h2>
+            <div class="cart-img">
+                <img src=" <%=  item.productId.imageUrl %> " alt="">
+            </div>
+
+            <h2 class="quantity">
+                <button class="dec_inc">
+
+                    <% if (item.quantity == 1 ) { %>
+                    <a style="text-decoration: none;" href="/cart/delete/<%= item._id %>"> - </a>
+                    <% } else {  %>
+
+                    <a style="text-decoration: none;" href="/cart_delete_one/<%= item._id %>"> - </a>
+                    <% } %>
+
+                </button>
+
+                <%= item.quantity %>
+
+                <% if ( item.quantity  >= item.productId.quantity  ) { %>
+                    <button class="dec_inc" disabled>
+                        <a style="text-decoration: none;" class="hidden" href="/cart/<%= item.productId._id %>" > + </a>
+                    </button>
+               
+                <% } else { %>
+                    <button class="dec_inc" >
+                        <a style="text-decoration: none;" href="/cart/<%= item.productId._id %>" > + </a>
+                    </button>
+                <% } %>
+            </h2>
+
+
+            <h2 class="price"> <%= item.cart_price %> </h2>
+            <a class="cart-delete" style="text-decoration: none;" href="cart/delete/<%= item._id %>"> Delete </a>
+        </div>
+
+        <%   } %>
+
+
+        <center>
+            <h1> Total _ Price = <%=  total_price  %> </h1>
+        </center>
+        
+    </section>
+
+        <hr>
+        <center>
+            <a class="order_now" style="text-decoration: none;" href="/create-order"> Order Now </a>
+        </center>
+
+        <% } else { %>
+
+        <center>No Products Added </center>
+
+        <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <%- include('../includes/end.ejs')   %>

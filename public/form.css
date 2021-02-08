@@ -1,0 +1,13 @@
+#our-form{
+
+    /* border: 2px solid red; */
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+
+.our-form-group{
+    border: 2px solid blue;
+    margin: 20px 0px;
+    padding: 20px 0px;
+}

@@ -1,0 +1,43 @@
+<%- include('../includes/head.ejs')   %>
+
+
+<link rel="stylesheet" href="/order.css">
+
+</head>
+
+<body>
+
+    <%- include('../includes/nav.ejs')   %>
+
+    <div class="orders">
+
+        <table>
+            <thead>
+                <tr>       
+                    <th>S.No</th>
+                    <th>Order_ Id</th>
+                    <th>User_Name</th>
+                    <th>Total_Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for ( order in  orders ) { %>
+                <tr>
+                    <td><%= parseInt(order) +1 %></td>
+                    <td> <%= orders[order]._id %> </td>
+                    <td> <%= orders[order].user.name %></td>
+                    <td> <%= orders[order].total_price %></td>
+                </tr>
+                
+                
+                <tr >
+                    <td colspan="3" style="background-color: whitesmoke;"></td>
+                </tr>
+                <%  }  %>
+            </tbody>
+        </table>
+
+    </div>
+
+    <%- include('../includes/end.ejs')   %>

@@ -1,0 +1,81 @@
+<%- include('../includes/head.ejs')   %>
+
+
+<link rel="stylesheet" href="/card.css">
+
+</head>
+
+<body>
+
+    <%- include('../includes/nav.ejs')   %>
+
+    <section id="all_products">
+
+
+        <%  for ( let item of all_prod ) { %>
+
+        <div class="card" style="width: 18rem; height: 420px !important; ">
+            <img src="<%= item.imageUrl %>" class="card-img-top" alt="No Image" style="height: 60% !important;">
+            <div class="card-body">
+                <h5 class="card-title"><%= item.title%></h5>
+                <h5 class="card-title">Price - <%= item.price%></h5>
+
+
+                <!-- if product quantity is zero  -->
+                <% if (item.quantity == 0 ) { %>
+
+                    <% if ( !isAdmin ) { %>
+                        <a href="#" class="btn btn-primary" id="disable">Out Of Stock</a>
+                    <% } %>
+                   
+
+                <%  } else {  %>
+
+                    <% if ( !isAdmin ) { %>   
+
+                    <!-- if user had item added in his cart  -->
+                    <% if (user_cart.length > 0 ) { %>     
+                        
+                        <% ( present = false )  %>
+                        
+                        <% for (added of user_cart ) {  %>
+                            
+                            <!-- if cart_item matches with the item  -->
+
+                            <% if ( JSON.stringify( added.productId ) == JSON.stringify(item._id) ) { %>
+
+                                <% if ( item.quantity <= added.quantity ) {  %>
+                                    <a class="btn btn-primary" href="/cart/<%= item._id %>" id="disable">Cant Add More</a>
+                                    <% (present = true )%>
+                                <% }  %>
+                                
+                            <% }  %>
+                        <% }  %>
+                        
+                        <% if ( !present ) { %>
+                            <a class="btn btn-primary" href="/cart/<%= item._id %>" > Add To Cart </a>
+                         <% } %>
+                                        
+                    <!-- if user had  no item added in his cart  -->
+                    <% } else { %>
+                        <a class="btn btn-primary" href="/cart/<%= item._id %>">Add To Cart</a>
+                    <% } %>
+                    
+                    <!-- not admin if condition closed here  -->
+                    <% } %>
+
+                <% } %>
+
+                <a href="/detail/<%= item._id %>" class="btn btn-primary">Detail</a> <br>
+            </div>
+        </div>
+
+
+        <%  } %>
+
+
+    </section>
+
+
+
+    <%- include('../includes/end.ejs')   %>

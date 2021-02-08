@@ -1,0 +1,36 @@
+<nav class="our-navbar h-nav">
+
+    <ul class="our-navlist  v-class">
+        <li class="items"><a href="/">E-Kart</a></li>
+        
+        <% if ( isAuthenticated ) {  %>
+
+            <% if ( !isAdmin ) { %>
+                <li class="items"><a href="/cart">Cart</a></li>
+                <li class="items"><a href="/myorder">My Order</a></li>
+                <% } %>
+                
+                
+                <% if ( isAdmin ) { %>
+                    <li class="items"><a href="/create-product">Create Product</a></li>
+                    <li class="items"><a href="/admin">Admin</a></li>
+                    <li class="items"><a href="/all_orders">All Orders</a></li>
+            <% } %>
+
+            <li class="items"><a href="/logout">Logout</a></li>
+
+        <% } %>
+        
+
+        <% if (!isAuthenticated) { %>
+        <li class="items"><a href="/login">Login</a></li>
+        <li class="items"><a href="/signup">Signup</a></li>
+        <% } %>
+    </ul>
+
+    <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</nav>
